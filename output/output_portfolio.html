@@ -3,13 +3,13 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Portfólio de {{ dados.nome }}</title>
+    <title>Portfólio de bruno mars</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 
     <style>
         :root {
-            --cor-principal: {{ design.cor_principal }};
-            --cor-secundaria: {{ design.cor_secundaria }};
+            --cor-principal: #004080;
+            --cor-secundaria: #408080;
         }
     </style>
 </head>
@@ -20,28 +20,26 @@
         <!-- Sidebar Esquerda -->
         <aside class="sidebar" style="background-color: var(--cor-principal);">
             <div class="profile-section">
-                {% if dados.processed_img_path %}
-                <img src="{{ dados.processed_img_path }}" alt="Foto de Perfil" class="profile-pic">
-                {% else %}
-                <div class="profile-pic placeholder"></div>
-                {% endif %}
+                
+                <img src="C:\Projeto_Portfolio\uploads\processed_profile_pic.png" alt="Foto de Perfil" class="profile-pic">
+                
 
-                <h1 class="name">{{ dados.nome | default('Nome Completo') }}</h1>
-                <h2 class="role">{{ dados.titulo | default('Título Profissional') }}</h2>
+                <h1 class="name">bruno mars</h1>
+                <h2 class="role">melhor cantor</h2>
             </div>
 
             <div class="contact-info">
                 <div class="contact-item">
                     <span class="icon">📞</span>
-                    <span class="text">{{ dados.telefone }}</span>
+                    <span class="text">11 95341516</span>
                 </div>
                 <div class="contact-item">
                     <span class="icon">📧</span>
-                    <span class="text">{{ dados.email }}</span>
+                    <span class="text">dsmatiask@mgial.com</span>
                 </div>
                 <div class="contact-item">
                     <span class="icon">📍</span>
-                    <span class="text">{{ dados.local }}</span>
+                    <span class="text">macjeo</span>
                 </div>
             </div>
 
@@ -51,27 +49,23 @@
                 <div class="skill-category">
                     <h4>Front-end</h4>
                     <div class="tags">
-                        {% for skill in dados.habilidades_frontend_list %}
-                        <span class="tag">{{ skill }}</span>
-                        {% endfor %}
+                        
+                        <span class="tag">cantor max</span>
+                        
                     </div>
                 </div>
 
                 <div class="skill-category">
                     <h4>Back-end</h4>
                     <div class="tags">
-                        {% for skill in dados.habilidades_backend_list %}
-                        <span class="tag">{{ skill }}</span>
-                        {% endfor %}
+                        
                     </div>
                 </div>
 
                 <div class="skill-category">
                     <h4>Soft Skills</h4>
                     <div class="tags">
-                        {% for skill in dados.habilidades_soft_list %}
-                        <span class="tag">{{ skill }}</span>
-                        {% endfor %}
+                        
                     </div>
                 </div>
             </div>
@@ -79,12 +73,12 @@
             <div class="sidebar-section connect">
                 <h3 class="sidebar-title">Conecte-se</h3>
                 <div class="social-links">
-                    {% if dados.linkedin %}
-                    <a href="{{ dados.linkedin }}" class="social-link">LinkedIn</a>
-                    {% endif %}
-                    {% if dados.instagram %}
-                    <a href="{{ dados.instagram }}" class="social-link">Instagram</a>
-                    {% endif %}
+                    
+                    <a href="https://linkedin.com/mathias-borges-marques" class="social-link">LinkedIn</a>
+                    
+                    
+                    <a href="https://instagram.com/ia.impactos" class="social-link">Instagram</a>
+                    
                 </div>
             </div>
         </aside>
@@ -94,8 +88,7 @@
 
             <section class="section">
                 <h3 class="section-title" style="color: var(--cor-principal);">Sobre Mim</h3>
-                <p class="bio-text">{{ dados.bio | default('Descrição sobre sua paixão por tecnologia e especialidade.')
-                    }}</p>
+                <p class="bio-text">canto muito, amo brasil</p>
             </section>
 
             <section class="section">
@@ -103,13 +96,12 @@
                 <div class="timeline">
                     <div class="timeline-item">
                         <div class="timeline-header">
-                            <h4 class="item-title">{{ dados.exp_cargo }}</h4>
-                            <span class="item-period" style="background-color: var(--cor-secundaria);">{{
-                                dados.exp_periodo }}</span>
+                            <h4 class="item-title">cantpr</h4>
+                            <span class="item-period" style="background-color: var(--cor-secundaria);"></span>
                         </div>
-                        <p class="item-subtitle">{{ dados.exp_empresa }}</p>
+                        <p class="item-subtitle">afya</p>
                         <div class="item-description">
-                            {{ dados.exp_resumo | replace('\n', '<br>') | safe }}
+                            canto muito
                         </div>
                     </div>
                 </div>
@@ -120,12 +112,11 @@
                 <div class="timeline">
                     <div class="timeline-item">
                         <div class="timeline-header">
-                            <h4 class="item-title">{{ dados.formacao_curso }}</h4>
-                            <span class="item-period" style="background-color: var(--cor-secundaria);">{{
-                                dados.formacao_periodo }}</span>
+                            <h4 class="item-title">cientsista cantps</h4>
+                            <span class="item-period" style="background-color: var(--cor-secundaria);"></span>
                         </div>
-                        <p class="item-subtitle">{{ dados.formacao_instituicao }}</p>
-                        <p class="item-description">{{ dados.formacao_descricao }}</p>
+                        <p class="item-subtitle">afya</p>
+                        <p class="item-description"></p>
                     </div>
                 </div>
             </section>

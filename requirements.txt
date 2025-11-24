@@ -1,4 +1,5 @@
 # libs do projeto
+#rode o comando: pip install -r requirements.txt
 customtkinter
 Pillow
 Jinja2
