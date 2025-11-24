@@ -1,3 +1,4 @@
+# libs do projeto
 customtkinter
 Pillow
 Jinja2

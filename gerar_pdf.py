@@ -32,7 +32,12 @@ class PortfolioPDFGenerator(ctk.CTkFrame):
         )
         self.info_label.grid(row=1, column=0, padx=20, pady=(0, 40), sticky="n")
         
-        self.generated_file_path = "portfolio_profissional.pdf"
+        self.output_dir = "output"
+        if not os.path.exists(self.output_dir):
+            os.makedirs(self.output_dir)
+            
+        self.generated_file_path = os.path.join(self.output_dir, "portfolio_profissional.pdf")
+        self.html_file_path = os.path.join(self.output_dir, "output_portfolio.html")
 
         self.generate_button = ctk.CTkButton(
             self, 
@@ -89,7 +94,11 @@ class PortfolioPDFGenerator(ctk.CTkFrame):
             # redimensionar a imagem é importante para otimização do PDF.
             
             # Salvar a imagem processada temporariamente
-            processed_img_path = "processed_profile_pic.png"
+            upload_dir = "uploads"
+            if not os.path.exists(upload_dir):
+                os.makedirs(upload_dir)
+                
+            processed_img_path = os.path.join(upload_dir, "processed_profile_pic.png")
             img.save(processed_img_path, "PNG")
 
             return os.path.abspath(processed_img_path)
@@ -138,7 +147,7 @@ class PortfolioPDFGenerator(ctk.CTkFrame):
             )
             
             # Salva o HTML gerado (útil para debug)
-            with open("output_portfolio.html", "w", encoding="utf-8") as f:
+            with open(self.html_file_path, "w", encoding="utf-8") as f:
                 f.write(html_output)
             
             # --- 4. Gerar o PDF com Weasyprint ---

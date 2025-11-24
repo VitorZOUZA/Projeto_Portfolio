@@ -55,15 +55,29 @@ class PortfolioPersonalizacao(ctk.CTkFrame):
         )
         self.secondary_color_button.grid(row=1, column=2, padx=10, pady=10)
 
-        # --- Botão de Navegação ---
+        # --- Botões de Navegação ---
+        button_frame = ctk.CTkFrame(self, fg_color="transparent")
+        button_frame.grid(row=4, column=0, padx=20, pady=(40, 20), sticky="ew")
+        button_frame.grid_columnconfigure((0, 1), weight=1)
+
+        self.back_button = ctk.CTkButton(
+            button_frame, 
+            text="Voltar ao Início", 
+            command=lambda: controller.show_frame("WelcomeFrame"),
+            height=40,
+            font=ctk.CTkFont(size=18, weight="bold"),
+            fg_color="gray"
+        )
+        self.back_button.grid(row=0, column=0, padx=10, sticky="e")
+
         self.next_button = ctk.CTkButton(
-            self, 
+            button_frame, 
             text="Gerar Portfólio PDF", 
             command=self._save_and_next,
             height=40,
             font=ctk.CTkFont(size=18, weight="bold")
         )
-        self.next_button.grid(row=4, column=0, padx=20, pady=(40, 20), sticky="s")
+        self.next_button.grid(row=0, column=1, padx=10, sticky="w")
 
     def _choose_color(self, key):
         """Abre o seletor de cores nativo e atualiza o estado."""

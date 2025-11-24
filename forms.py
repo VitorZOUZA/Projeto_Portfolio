@@ -74,6 +74,17 @@ class PortfolioForms(ctk.CTkFrame):
         self._add_input_field("habilidades_backend", "Habilidades Backend (Ex: Node.js, Express, PostgreSQL):", is_textbox=True)
         self._add_input_field("habilidades_soft", "Soft Skills (Ex: Liderança, Comunicação):", is_textbox=True)
 
+
+        self.back_button = ctk.CTkButton(
+            self.scrollable_frame,
+            text="Voltar ao Início", 
+            command=lambda: controller.show_frame("WelcomeFrame"),
+            height=40,
+            font=ctk.CTkFont(size=18, weight="bold"),
+            fg_color="gray"
+        )
+        self.back_button.grid(row=0, column=0, padx=10, sticky="e")
+
         # --- Botão de Navegação ---
         self._create_section_title("", 35) # Espaçamento
         self.next_button = ctk.CTkButton(
