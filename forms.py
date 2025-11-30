@@ -3,6 +3,7 @@ from tkinter import filedialog
 from PIL import Image, ImageTk
 import os
 import shutil
+import json
 
 class PortfolioForms(ctk.CTkFrame):
     """
@@ -12,6 +13,7 @@ class PortfolioForms(ctk.CTkFrame):
         super().__init__(master)
         self.controller = controller
         self.photo_path = None # Caminho da foto carregada
+        self.json_file = "portfolio_data.json"
         
         # Configura o layout com rolagem, já que o formulário será longo
         self.grid_rowconfigure(0, weight=1)
@@ -95,6 +97,9 @@ class PortfolioForms(ctk.CTkFrame):
             font=ctk.CTkFont(size=18, weight="bold")
         )
         self._place_element(self.next_button, pady=20)
+        
+        # Carregar dados salvos se existirem
+        self._load_data()
 
 
     def _create_section_title(self, text, row_skip=0):
@@ -132,57 +137,49 @@ class PortfolioForms(ctk.CTkFrame):
         self._place_element(field, pady=(0, 10))
         
     
-    def _load_photo(self):
-        """Abre a caixa de diálogo para selecionar uma imagem e a pré-visualiza."""
-        # Limita os tipos de arquivo
-        file_path = filedialog.askopenfilename(
-            filetypes=[("Image files", "*.png *.jpg *.jpeg")]
-        )
-        if file_path:
+    def _load_photo(self, path=None):
+        """Abre a caixa de diálogo para selecionar uma imagem e a pré-visualiza. Se path for fornecido, carrega direto."""
+        if path:
+            file_path = path
+        else:
+            # Limita os tipos de arquivo
+            file_path = filedialog.askopenfilename(
+                filetypes=[("Image files", "*.png *.jpg *.jpeg")]
+            )
+            
+        if file_path and os.path.exists(file_path):
             # --- Salvar cópia localmente ---
             try:
-                # Cria a pasta uploads se não existir
-                upload_dir = "uploads"
-                if not os.path.exists(upload_dir):
-                    os.makedirs(upload_dir)
-                
-                # Define o caminho de destino
-                filename = os.path.basename(file_path)
-                # Garante um nome seguro ou padronizado se preferir, aqui mantemos o original
-                # mas salvamos na pasta do projeto
-                destination_path = os.path.join(upload_dir, filename)
-                
-                # Copia o arquivo
-                shutil.copy2(file_path, destination_path)
-                
-                # Atualiza o photo_path para o arquivo local
-                self.photo_path = os.path.abspath(destination_path)
-                
-                # --- Tratamento de Imagem com Pillow (usando a cópia local) ---
-                # 1. Abre a imagem
+                # Se não for carregamento automático (path=None), copia para uploads
+                if not path:
+                    upload_dir = "uploads"
+                    if not os.path.exists(upload_dir):
+                        os.makedirs(upload_dir)
+                    
+                    filename = os.path.basename(file_path)
+                    destination_path = os.path.join(upload_dir, filename)
+                    shutil.copy2(file_path, destination_path)
+                    self.photo_path = os.path.abspath(destination_path)
+                else:
+                    self.photo_path = file_path # Já é o caminho salvo
+
+                # --- Tratamento de Imagem com Pillow ---
                 img = Image.open(self.photo_path)
-                # 2. Define o tamanho desejado para o preview
-                size = 100, 100 
-                # 3. Cria uma cópia e redimensiona mantendo a proporção (Thumbnail)
-                img_copy = img.copy()
-                img_copy.thumbnail(size) 
                 
-                # 4. Converte para um formato que o CTkinter possa usar
-                ctk_image = ImageTk.PhotoImage(img_copy)
+                # Criar CTkImage (mantém alta qualidade em HighDPI)
+                # Definimos o tamanho de exibição para 100x100, mas passamos a imagem original
+                ctk_image = ctk.CTkImage(light_image=img, dark_image=img, size=(100, 100))
                 
-                # 5. Atualiza o Label de pré-visualização
                 self.photo_preview.configure(
                     image=ctk_image, 
                     text="", 
-                    compound="top", # Para a imagem ficar no topo se tiver texto
-                    width=size[0], 
-                    height=size[1]
+                    compound="top"
                 )
-                self.photo_preview.image = ctk_image # Previne que a imagem seja coletada pelo garbage collector
+                # self.photo_preview.image = ctk_image # CTkLabel mantém a referência automaticamente
                 
             except Exception as e:
                 print(f"Erro ao carregar ou processar imagem: {e}")
-                self.photo_path = None
+                if not path: self.photo_path = None
                 
     def _get_input_data(self):
         """Coleta todos os dados de todos os campos do formulário."""
@@ -194,15 +191,51 @@ class PortfolioForms(ctk.CTkFrame):
             elif isinstance(field, ctk.StringVar):
                 # Para Entry, usamos o valor da StringVar
                 data[key] = field.get().strip()
-            # Se for o próprio Entry, usar field.get(). Não é o caso aqui.
                 
         # Adiciona o caminho da foto
         data["photo_path"] = self.photo_path 
         return data
 
+    def _save_data_to_json(self, data):
+        """Salva os dados em um arquivo JSON."""
+        try:
+            with open(self.json_file, "w", encoding="utf-8") as f:
+                json.dump(data, f, ensure_ascii=False, indent=4)
+        except Exception as e:
+            print(f"Erro ao salvar dados em JSON: {e}")
+
+    def _load_data(self):
+        """Carrega os dados do arquivo JSON se existir."""
+        if not os.path.exists(self.json_file):
+            return
+
+        try:
+            with open(self.json_file, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            
+            # Preenche os campos
+            for key, value in data.items():
+                if key in self.fields:
+                    field = self.fields[key]
+                    if isinstance(field, ctk.CTkTextbox):
+                        field.delete("1.0", "end")
+                        field.insert("1.0", value)
+                    elif isinstance(field, ctk.StringVar):
+                        field.set(value)
+            
+            # Carrega a foto
+            if "photo_path" in data and data["photo_path"]:
+                self._load_photo(path=data["photo_path"])
+                
+        except Exception as e:
+            print(f"Erro ao carregar dados do JSON: {e}")
+
     def _save_and_next(self):
         """Salva os dados coletados no controlador e avança para a próxima tela."""
         collected_data = self._get_input_data()
+        
+        # Salva persistência
+        self._save_data_to_json(collected_data)
         
         # Otimização para listas de habilidades: transforma a string em lista
         for key in ["habilidades_frontend", "habilidades_backend", "habilidades_soft"]:

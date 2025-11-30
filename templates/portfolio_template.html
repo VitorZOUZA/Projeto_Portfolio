@@ -5,18 +5,16 @@
     <meta charset="UTF-8">
     <title>Portfólio de {{ dados.nome }}</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-
     <style>
         :root {
-            --cor-principal: {{ design.cor_principal }};
-            --cor-secundaria: {{ design.cor_secundaria }};
+            --cor-principal: {{ design.cor_principal | default('#002856') }};
+            --cor-secundaria: {{ design.cor_secundaria | default('#1986c7') }};
         }
     </style>
 </head>
 
 <body>
     <div class="portfolio-container">
-
         <!-- Sidebar Esquerda -->
         <aside class="sidebar" style="background-color: var(--cor-principal);">
             <div class="profile-section">
@@ -25,11 +23,9 @@
                 {% else %}
                 <div class="profile-pic placeholder"></div>
                 {% endif %}
-
                 <h1 class="name">{{ dados.nome | default('Nome Completo') }}</h1>
                 <h2 class="role">{{ dados.titulo | default('Título Profissional') }}</h2>
             </div>
-
             <div class="contact-info">
                 <div class="contact-item">
                     <span class="icon">📞</span>
@@ -44,10 +40,15 @@
                     <span class="text">{{ dados.local }}</span>
                 </div>
             </div>
-
             <div class="sidebar-section">
                 <h3 class="sidebar-title">Habilidades</h3>
-
+                <!-- Radar Chart -->
+                {% if dados.radar_chart_path %}
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <img src="{{ dados.radar_chart_path }}" alt="Gráfico de Habilidades"
+                        style="width: 100%; max-width: 200px;">
+                </div>
+                {% endif %}
                 <div class="skill-category">
                     <h4>Front-end</h4>
                     <div class="tags">
@@ -56,7 +57,6 @@
                         {% endfor %}
                     </div>
                 </div>
-
                 <div class="skill-category">
                     <h4>Back-end</h4>
                     <div class="tags">
@@ -65,7 +65,6 @@
                         {% endfor %}
                     </div>
                 </div>
-
                 <div class="skill-category">
                     <h4>Soft Skills</h4>
                     <div class="tags">
@@ -88,16 +87,13 @@
                 </div>
             </div>
         </aside>
-
         <!-- Conteúdo Principal Direita -->
         <main class="main-content">
-
             <section class="section">
                 <h3 class="section-title" style="color: var(--cor-principal);">Sobre Mim</h3>
                 <p class="bio-text">{{ dados.bio | default('Descrição sobre sua paixão por tecnologia e especialidade.')
                     }}</p>
             </section>
-
             <section class="section">
                 <h3 class="section-title" style="color: var(--cor-principal);">Experiência Profissional</h3>
                 <div class="timeline">
@@ -114,7 +110,6 @@
                     </div>
                 </div>
             </section>
-
             <section class="section">
                 <h3 class="section-title" style="color: var(--cor-principal);">Formação Acadêmica</h3>
                 <div class="timeline">
@@ -129,7 +124,6 @@
                     </div>
                 </div>
             </section>
-
         </main>
     </div>
 </body>

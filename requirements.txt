@@ -4,3 +4,5 @@ customtkinter
 Pillow
 Jinja2
 weasyprint
+pymupdf
+matplotlib

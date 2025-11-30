@@ -1,4 +1,37 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap');
+@font-face {
+    font-family: 'Montserrat';
+    src: url('fonts/Montserrat-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('fonts/Montserrat-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('fonts/Montserrat-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('fonts/OpenSans-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('fonts/OpenSans-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
 
 * {
     margin: 0;
@@ -20,14 +53,17 @@ body {
     margin: 0 auto;
     background-color: #fff;
     display: flex;
-    overflow: hidden; /* Garante que nada saia da página */
+    overflow: hidden;
+    /* Garante que nada saia da página */
 }
 
 /* --- Sidebar --- */
 .sidebar {
-    width: 35%;
+    width: 30%;
+    background-color: #333;
+    /* Fallback color */
     color: white;
-    padding: 40px 20px;
+    padding: 30px 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -35,16 +71,16 @@ body {
 }
 
 .profile-section {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 .profile-pic {
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
     object-fit: cover;
     border: 4px solid rgba(255, 255, 255, 0.3);
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .profile-pic.placeholder {
@@ -53,7 +89,7 @@ body {
 
 .name {
     font-family: 'Montserrat', sans-serif;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 700;
     margin-bottom: 5px;
     line-height: 1.2;
@@ -69,27 +105,27 @@ body {
 
 .contact-info {
     width: 100%;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     text-align: left;
 }
 
 .contact-item {
     display: flex;
     align-items: center;
-    margin-bottom: 12px;
-    font-size: 13px;
+    margin-bottom: 10px;
+    font-size: 12px;
 }
 
 .contact-item .icon {
     margin-right: 10px;
-    font-size: 16px;
+    font-size: 14px;
     width: 20px;
     text-align: center;
 }
 
 .sidebar-section {
     width: 100%;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     text-align: left;
 }
 
@@ -100,58 +136,58 @@ body {
     letter-spacing: 1px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     padding-bottom: 5px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .skill-category {
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
 .skill-category h4 {
-    font-size: 14px;
-    margin-bottom: 8px;
+    font-size: 13px;
+    margin-bottom: 6px;
     opacity: 0.9;
 }
 
 .tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 5px;
+    gap: 4px;
 }
 
 .tag {
     background-color: rgba(255, 255, 255, 0.2);
-    padding: 4px 8px;
+    padding: 3px 6px;
     border-radius: 4px;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 600;
 }
 
 .social-links {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
 }
 
 .social-link {
     color: white;
     text-decoration: none;
     background-color: rgba(255, 255, 255, 0.1);
-    padding: 8px 12px;
+    padding: 6px 10px;
     border-radius: 4px;
-    font-size: 13px;
+    font-size: 12px;
     transition: background-color 0.2s;
     text-align: center;
 }
 
 /* --- Main Content --- */
 .main-content {
-    width: 65%;
-    padding: 40px;
+    width: 70%;
+    padding: 30px;
 }
 
 .section {
-    margin-bottom: 40px;
+    margin-bottom: 25px;
 }
 
 .section-title {
@@ -160,14 +196,14 @@ body {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     border-bottom: 2px solid #eee;
-    padding-bottom: 10px;
+    padding-bottom: 8px;
 }
 
 .bio-text {
-    font-size: 14px;
-    line-height: 1.6;
+    font-size: 13px;
+    line-height: 1.5;
     color: #555;
 }
 
@@ -178,7 +214,7 @@ body {
 }
 
 .timeline-item {
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     position: relative;
 }
 
@@ -197,35 +233,40 @@ body {
 .timeline-header {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 5px;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 4px;
 }
 
 .item-title {
     font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 700;
     color: #333;
+    flex: 1;
 }
 
 .item-period {
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 600;
     color: white;
-    padding: 2px 8px;
+    padding: 3px 8px;
     border-radius: 10px;
-    white-space: nowrap;
+    flex-shrink: 0;
+    max-width: 120px;
+    text-align: center;
+    line-height: 1.3;
 }
 
 .item-subtitle {
     font-size: 13px;
     font-weight: 600;
     color: #666;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 .item-description {
-    font-size: 13px;
-    line-height: 1.5;
+    font-size: 12px;
+    line-height: 1.4;
     color: #555;
 }

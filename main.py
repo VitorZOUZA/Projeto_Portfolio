@@ -13,6 +13,7 @@ if os.path.exists(gtk3_path):
 from forms import PortfolioForms
 from personaliza import PortfolioPersonalizacao
 from gerar_pdf import PortfolioPDFGenerator
+from lista_portfolios import ListaPortfolios
 
 # Configura o tema do customtkinter
 ctk.set_appearance_mode("System")  # Ou "Dark", "Light"
@@ -75,6 +76,10 @@ class App(ctk.CTk):
         # Tela de Geração de PDF
         self.frames["PDFGeneratorFrame"] = PortfolioPDFGenerator(master=self, controller=self)
         self.frames["PDFGeneratorFrame"].grid(row=0, column=0, sticky="nsew")
+        
+        # Tela de Lista de Portfólios
+        self.frames["ListaPortfoliosFrame"] = ListaPortfolios(master=self, controller=self)
+        self.frames["ListaPortfoliosFrame"].grid(row=0, column=0, sticky="nsew")
 
     def show_frame(self, page_name):
         """Traz a tela solicitada para o topo."""
@@ -83,6 +88,8 @@ class App(ctk.CTk):
         # Atualiza o conteúdo da tela se necessário
         if page_name == "PDFGeneratorFrame":
             self.frames["PDFGeneratorFrame"].update_data()
+        elif page_name == "ListaPortfoliosFrame":
+            self.frames["ListaPortfoliosFrame"].update_data()
         
     def set_portfolio_data(self, data):
         """Atualiza os dados do portfólio."""
@@ -133,7 +140,19 @@ class WelcomeFrame(ctk.CTkFrame):
             width=200,
             font=ctk.CTkFont(size=18, weight="bold")
         )
-        self.start_button.grid(row=3, column=0, padx=20, pady=(0, 40))
+        self.start_button.grid(row=3, column=0, padx=20, pady=(0, 10))
+        
+        # Botão para ver lista de portfólios
+        self.list_button = ctk.CTkButton(
+            self, 
+            text="Ver Lista de Portfólios", 
+            command=lambda: controller.show_frame("ListaPortfoliosFrame"),
+            height=40,
+            width=200,
+            font=ctk.CTkFont(size=16),
+            fg_color="#2ecc71"
+        )
+        self.list_button.grid(row=4, column=0, padx=20, pady=(0, 40))
 
 
 if __name__ == "__main__":

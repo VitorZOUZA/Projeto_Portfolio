@@ -99,4 +99,9 @@ class PortfolioPersonalizacao(ctk.CTkFrame):
             "cor_secundaria": self.secondary_color_var.get()
         }
         self.controller.set_design_config(config)
+        
+        # Salva na lista geral de portfólios
+        from lista_portfolios import ListaPortfolios
+        ListaPortfolios.save_portfolio(self.controller.portfolio_data, config)
+        
         self.controller.show_frame("PDFGeneratorFrame")

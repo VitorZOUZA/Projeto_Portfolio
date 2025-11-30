@@ -1,0 +1,22 @@
+{
+    "nome": "Marcela Mac Donalds",
+    "titulo": "Engenheira de Software",
+    "bio": "Engenheira de projetos de softwares completos",
+    "telefone": "(82) 9999-4848",
+    "email": "marcela.engenheira@gmail.com",
+    "local": "Arapiraca-AL",
+    "linkedin": "https://www.linkedin.com/in/marcela-mac-donalds",
+    "instagram": "",
+    "formacao_curso": "Engenharia de Software",
+    "formacao_instituicao": "Unit",
+    "formacao_periodo": "2020-2024",
+    "formacao_descricao": "Durante o curso de Engenharia de Software, foquei em projetos práticos (como desenvolvimento de aplicações em Python e Java), estudos teóricos (Estruturas de Dados, Algoritmos, Banco de Dados), participação em grupos de estudo e hackathons, trabalho de conclusão de curso (TCC) com metodologias ágeis, e atividades extracurriculares como workshops e contribuições open-source. Essas experiências desenvolveram habilidades em resolução de problemas, trabalho em equipe e adaptação a tecnologias emergentes, preparando-me para desafios profissionais.",
+    "exp_cargo": "Engenheira de Software",
+    "exp_empresa": "TOTVS",
+    "exp_periodo": "2019 -  2025",
+    "exp_resumo": "-Desenvolvimento de aplicações web/móveis (Python, JS, React, Django).\n-Análise de requisitos e design de sistemas.\n-Colaboração em equipes ágeis (Scrum/Kanban).\n-Testes automatizados (unitários/integração).\n-Integração com APIs e serviços externos.\n-Suporte a infraestrutura e deploy em nuvem.\n-Documentação e mentoria.\n-Resolução de bugs e otimização (Git, Docker, CI/CD).",
+    "habilidades_frontend": "HTML, CSS, JavaScript, React, Vue.js, TypeScript, Sass, Bootstrap, Responsive Design, Webpack, API Integration.",
+    "habilidades_backend": "Python, Node.js, Express.js, Django, Flask, SQL, PostgreSQL, MongoDB, RESTful APIs, GraphQL, Docker, AWS, Microservices.",
+    "habilidades_soft": "Comunicação, Gestão de Tempo, Pensamento Crítico, Aprendizado Contínuo.",
+    "photo_path": "C:\\Projeto_Portfolio\\uploads\\moca.png"
+}
