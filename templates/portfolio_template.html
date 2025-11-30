@@ -79,10 +79,10 @@
                 <h3 class="sidebar-title">Conecte-se</h3>
                 <div class="social-links">
                     {% if dados.linkedin %}
-                    <a href="{{ dados.linkedin }}" class="social-link">LinkedIn</a>
+                    <a href="{{ dados.linkedin }}" class="social-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                     {% endif %}
                     {% if dados.instagram %}
-                    <a href="{{ dados.instagram }}" class="social-link">Instagram</a>
+                    <a href="{{ dados.instagram }}" class="social-link" target="_blank" rel="noopener noreferrer">Instagram</a>
                     {% endif %}
                 </div>
             </div>
@@ -97,31 +97,37 @@
             <section class="section">
                 <h3 class="section-title" style="color: var(--cor-principal);">Experiência Profissional</h3>
                 <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-header">
-                            <h4 class="item-title">{{ dados.exp_cargo }}</h4>
-                            <span class="item-period" style="background-color: var(--cor-secundaria);">{{
-                                dados.exp_periodo }}</span>
+                    {% if dados.experiencias_list %}
+                        {% for exp in dados.experiencias_list %}
+                        <div class="timeline-item">
+                            <div class="timeline-header">
+                                <h4 class="item-title">{{ exp.cargo }}</h4>
+                                <span class="item-period" style="background-color: var(--cor-secundaria);">{{ exp.periodo }}</span>
+                            </div>
+                            <p class="item-subtitle">{{ exp.empresa }}</p>
+                            <div class="item-description">
+                                {{ exp.resumo | replace('\n', '<br>') | safe }}
+                            </div>
                         </div>
-                        <p class="item-subtitle">{{ dados.exp_empresa }}</p>
-                        <div class="item-description">
-                            {{ dados.exp_resumo | replace('\n', '<br>') | safe }}
-                        </div>
-                    </div>
+                        {% endfor %}
+                    {% endif %}
                 </div>
             </section>
             <section class="section">
                 <h3 class="section-title" style="color: var(--cor-principal);">Formação Acadêmica</h3>
                 <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-header">
-                            <h4 class="item-title">{{ dados.formacao_curso }}</h4>
-                            <span class="item-period" style="background-color: var(--cor-secundaria);">{{
-                                dados.formacao_periodo }}</span>
+                    {% if dados.formacoes_list %}
+                        {% for formacao in dados.formacoes_list %}
+                        <div class="timeline-item">
+                            <div class="timeline-header">
+                                <h4 class="item-title">{{ formacao.curso }}</h4>
+                                <span class="item-period" style="background-color: var(--cor-secundaria);">{{ formacao.periodo }}</span>
+                            </div>
+                            <p class="item-subtitle">{{ formacao.instituicao }}</p>
+                            <p class="item-description">{{ formacao.descricao }}</p>
                         </div>
-                        <p class="item-subtitle">{{ dados.formacao_instituicao }}</p>
-                        <p class="item-description">{{ dados.formacao_descricao }}</p>
-                    </div>
+                        {% endfor %}
+                    {% endif %}
                 </div>
             </section>
         </main>

@@ -55,19 +55,41 @@ class PortfolioForms(ctk.CTkFrame):
 
         # --- Seção de Formação Acadêmica ---
         self._create_section_title("🎓 Formação Acadêmica", 20)
-        # Campos de Formação (Simplificado para um bloco para o exemplo)
-        self._add_input_field("formacao_curso", "Curso/Grau:")
-        self._add_input_field("formacao_instituicao", "Instituição:")
-        self._add_input_field("formacao_periodo", "Período (Ex: 2025-2028):")
-        self._add_input_field("formacao_descricao", "Descrição (Ênfase, etc.):", is_textbox=True)
+        self.formacoes = []  # lista de dicts com refs dos campos
+        self.formacoes_container = ctk.CTkFrame(self.scrollable_frame)
+        self._place_element(self.formacoes_container)
+        self.formacoes_container.grid_columnconfigure(0, weight=1)
+        # Botões de ação da seção
+        formacao_actions = ctk.CTkFrame(self.scrollable_frame, fg_color="transparent")
+        formacao_actions.grid(row=self.row_counter, column=0, sticky="ew", padx=10, pady=10)
+        self.row_counter += 1
+        self.add_formacao_btn = ctk.CTkButton(
+            formacao_actions,
+            text="+ Adicionar Formação",
+            command=self._add_formacao_block,
+            fg_color="#2ecc71"
+        )
+        self.add_formacao_btn.grid(row=0, column=0, sticky="w")
+        # adiciona um bloco inicial vazio
+        self._add_formacao_block()
         
         # --- Seção de Experiência Profissional ---
         self._create_section_title("💼 Experiência Profissional", 25)
-        # Campos de Experiência (Simplificado para um bloco)
-        self._add_input_field("exp_cargo", "Cargo:")
-        self._add_input_field("exp_empresa", "Empresa/Local:")
-        self._add_input_field("exp_periodo", "Período (Ex: Março 2025 - Presente):")
-        self._add_input_field("exp_resumo", "Resumo das Responsabilidades (Use Bullet Points):", is_textbox=True)
+        self.experiencias = []
+        self.experiencias_container = ctk.CTkFrame(self.scrollable_frame)
+        self._place_element(self.experiencias_container)
+        self.experiencias_container.grid_columnconfigure(0, weight=1)
+        exp_actions = ctk.CTkFrame(self.scrollable_frame, fg_color="transparent")
+        exp_actions.grid(row=self.row_counter, column=0, sticky="ew", padx=10, pady=10)
+        self.row_counter += 1
+        self.add_exp_btn = ctk.CTkButton(
+            exp_actions,
+            text="+ Adicionar Experiência",
+            command=self._add_experiencia_block,
+            fg_color="#3498db"
+        )
+        self.add_exp_btn.grid(row=0, column=0, sticky="w")
+        self._add_experiencia_block()
         
         # --- Seção de Habilidades (Skills) ---
         self._create_section_title("💻 Habilidades", 30)
@@ -127,7 +149,6 @@ class PortfolioForms(ctk.CTkFrame):
         
         if is_textbox:
             field = ctk.CTkTextbox(self.scrollable_frame, height=80, width=400)
-            # Use o nome da chave para buscar o conteúdo mais tarde
             self.fields[key] = field 
         else:
             field_var = ctk.StringVar()
@@ -135,6 +156,95 @@ class PortfolioForms(ctk.CTkFrame):
             self.fields[key] = field_var
             
         self._place_element(field, pady=(0, 10))
+    
+    def _add_formacao_block(self):
+        """Cria um bloco de campos de formação com opção de remoção."""
+        idx = len(self.formacoes)
+        block = ctk.CTkFrame(self.formacoes_container, corner_radius=8)
+        block.grid(row=idx, column=0, sticky="ew", padx=5, pady=6)
+        block.grid_columnconfigure(0, weight=1)
+
+        # Campos
+        curso_var = ctk.StringVar()
+        inst_var = ctk.StringVar()
+        periodo_var = ctk.StringVar()
+        descricao_tb = ctk.CTkTextbox(block, height=60)
+
+        ctk.CTkLabel(block, text=f"Curso/Grau #{idx+1}:").grid(row=0, column=0, sticky="w", padx=8, pady=(8, 2))
+        ctk.CTkEntry(block, textvariable=curso_var).grid(row=1, column=0, sticky="ew", padx=8)
+        ctk.CTkLabel(block, text="Instituição:").grid(row=2, column=0, sticky="w", padx=8, pady=(8, 2))
+        ctk.CTkEntry(block, textvariable=inst_var).grid(row=3, column=0, sticky="ew", padx=8)
+        ctk.CTkLabel(block, text="Período:").grid(row=4, column=0, sticky="w", padx=8, pady=(8, 2))
+        ctk.CTkEntry(block, textvariable=periodo_var).grid(row=5, column=0, sticky="ew", padx=8)
+        ctk.CTkLabel(block, text="Descrição:").grid(row=6, column=0, sticky="w", padx=8, pady=(8, 2))
+        descricao_tb.grid(row=7, column=0, sticky="ew", padx=8, pady=(0, 8))
+
+        # Remover
+        remove_btn = ctk.CTkButton(block, text="Remover", fg_color="#e74c3c",
+                                   command=lambda b=block: self._remove_formacao_block(b))
+        remove_btn.grid(row=0, column=1, padx=8, pady=8)
+
+        # Registrar refs
+        self.formacoes.append({
+            'block': block,
+            'curso': curso_var,
+            'instituicao': inst_var,
+            'periodo': periodo_var,
+            'descricao': descricao_tb
+        })
+    
+    def _add_experiencia_block(self):
+        """Cria um bloco de experiência com opção de remoção."""
+        idx = len(self.experiencias)
+        block = ctk.CTkFrame(self.experiencias_container, corner_radius=8)
+        block.grid(row=idx, column=0, sticky="ew", padx=5, pady=6)
+        block.grid_columnconfigure(0, weight=1)
+
+        cargo_var = ctk.StringVar()
+        empresa_var = ctk.StringVar()
+        periodo_var = ctk.StringVar()
+        resumo_tb = ctk.CTkTextbox(block, height=60)
+
+        ctk.CTkLabel(block, text=f"Cargo #{idx+1}:").grid(row=0, column=0, sticky="w", padx=8, pady=(8, 2))
+        ctk.CTkEntry(block, textvariable=cargo_var).grid(row=1, column=0, sticky="ew", padx=8)
+        ctk.CTkLabel(block, text="Empresa/Local:").grid(row=2, column=0, sticky="w", padx=8, pady=(8, 2))
+        ctk.CTkEntry(block, textvariable=empresa_var).grid(row=3, column=0, sticky="ew", padx=8)
+        ctk.CTkLabel(block, text="Período:").grid(row=4, column=0, sticky="w", padx=8, pady=(8, 2))
+        ctk.CTkEntry(block, textvariable=periodo_var).grid(row=5, column=0, sticky="ew", padx=8)
+        ctk.CTkLabel(block, text="Resumo:").grid(row=6, column=0, sticky="w", padx=8, pady=(8, 2))
+        resumo_tb.grid(row=7, column=0, sticky="ew", padx=8, pady=(0, 8))
+
+        remove_btn = ctk.CTkButton(block, text="Remover", fg_color="#e74c3c",
+                                   command=lambda b=block: self._remove_experiencia_block(b))
+        remove_btn.grid(row=0, column=1, padx=8, pady=8)
+
+        self.experiencias.append({
+            'block': block,
+            'cargo': cargo_var,
+            'empresa': empresa_var,
+            'periodo': periodo_var,
+            'resumo': resumo_tb
+        })
+    
+    def _remove_formacao_block(self, block):
+        """Remove bloco de formação e reindexa grid."""
+        for i, f in enumerate(self.formacoes):
+            if f['block'] == block:
+                f['block'].destroy()
+                self.formacoes.pop(i)
+                break
+        # Reorganiza posições
+        for idx, f in enumerate(self.formacoes):
+            f['block'].grid_configure(row=idx)
+    
+    def _remove_experiencia_block(self, block):
+        for i, e in enumerate(self.experiencias):
+            if e['block'] == block:
+                e['block'].destroy()
+                self.experiencias.pop(i)
+                break
+        for idx, e in enumerate(self.experiencias):
+            e['block'].grid_configure(row=idx)
         
     
     def _load_photo(self, path=None):
@@ -213,6 +323,39 @@ class PortfolioForms(ctk.CTkFrame):
             with open(self.json_file, "r", encoding="utf-8") as f:
                 data = json.load(f)
             
+            # Reset containers
+            for f in list(self.formacoes):
+                f['block'].destroy()
+            self.formacoes.clear()
+            for e in list(self.experiencias):
+                e['block'].destroy()
+            self.experiencias.clear()
+
+            # Recria blocos conforme dados
+            for item in data.get("formacoes_list", []) or []:
+                self._add_formacao_block()
+                f = self.formacoes[-1]
+                f['curso'].set(item.get('curso', ''))
+                f['instituicao'].set(item.get('instituicao', ''))
+                f['periodo'].set(item.get('periodo', ''))
+                f['descricao'].delete("1.0", "end")
+                f['descricao'].insert("1.0", item.get('descricao', ''))
+
+            if not self.formacoes:
+                self._add_formacao_block()
+
+            for item in data.get("experiencias_list", []) or []:
+                self._add_experiencia_block()
+                e = self.experiencias[-1]
+                e['cargo'].set(item.get('cargo', ''))
+                e['empresa'].set(item.get('empresa', ''))
+                e['periodo'].set(item.get('periodo', ''))
+                e['resumo'].delete("1.0", "end")
+                e['resumo'].insert("1.0", item.get('resumo', ''))
+
+            if not self.experiencias:
+                self._add_experiencia_block()
+            
             # Preenche os campos
             for key, value in data.items():
                 if key in self.fields:
@@ -233,17 +376,40 @@ class PortfolioForms(ctk.CTkFrame):
     def _save_and_next(self):
         """Salva os dados coletados no controlador e avança para a próxima tela."""
         collected_data = self._get_input_data()
+
+        # Coleta formações dos blocos (apenas não vazias)
+        collected_data['formacoes_list'] = []
+        for f in self.formacoes:
+            formacao = {
+                'curso': f['curso'].get().strip(),
+                'instituicao': f['instituicao'].get().strip(),
+                'periodo': f['periodo'].get().strip(),
+                'descricao': f['descricao'].get("1.0", "end-1c").strip()
+            }
+            if any(formacao.values()):
+                collected_data['formacoes_list'].append(formacao)
+
+        # Coleta experiências dos blocos (apenas não vazias)
+        collected_data['experiencias_list'] = []
+        for e in self.experiencias:
+            experiencia = {
+                'cargo': e['cargo'].get().strip(),
+                'empresa': e['empresa'].get().strip(),
+                'periodo': e['periodo'].get().strip(),
+                'resumo': e['resumo'].get("1.0", "end-1c").strip()
+            }
+            if any(experiencia.values()):
+                collected_data['experiencias_list'].append(experiencia)
         
         # Salva persistência
         self._save_data_to_json(collected_data)
         
-        # Otimização para listas de habilidades: transforma a string em lista
+        # Otimização para listas de habilidades
         for key in ["habilidades_frontend", "habilidades_backend", "habilidades_soft"]:
-            if collected_data[key]:
-                 # Divide a string por vírgula e remove espaços em branco de cada item
+            if collected_data.get(key):
                 collected_data[f"{key}_list"] = [item.strip() for item in collected_data[key].split(',')]
             else:
-                 collected_data[f"{key}_list"] = []
+                collected_data[f"{key}_list"] = []
 
         self.controller.set_portfolio_data(collected_data)
         self.controller.show_frame("PersonalizacaoFrame")

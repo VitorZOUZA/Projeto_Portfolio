@@ -165,15 +165,26 @@ class ListaPortfolios(ctk.CTkFrame):
             text="Carregar",
             width=100,
             height=30,
-            command=lambda p=portfolio: self._load_portfolio(p)
+            command=lambda portfolio=portfolio: self._load_portfolio(portfolio)
         )
         load_button.grid(row=0, column=1, rowspan=7, padx=15, pady=15)
     
     def _load_portfolio(self, portfolio):
         """Carrega um portfólio selecionado."""
+        # Salva no JSON para que o formulário carregue
+        import json
+        try:
+            with open("portfolio_data.json", "w", encoding="utf-8") as f:
+                json.dump(portfolio, f, ensure_ascii=False, indent=4)
+        except Exception as e:
+            print(f"Erro ao salvar dados temporários: {e}")
+        
         self.controller.set_portfolio_data(portfolio)
         if "design_config" in portfolio:
             self.controller.set_design_config(portfolio["design_config"])
+        
+        # Recarrega o formulário
+        self.controller.frames["FormsFrame"]._load_data()
         self.controller.show_frame("FormsFrame")
     
     def _load_portfolios(self):

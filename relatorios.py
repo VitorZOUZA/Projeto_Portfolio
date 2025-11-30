@@ -1,6 +1,7 @@
 import matplotlib
 matplotlib.use('Agg') # Define o backend não-interativo para evitar erros de thread
 import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
 import numpy as np
 import os
 import hashlib
@@ -31,30 +32,33 @@ class GeradorRelatorios:
             angles = [n / float(N) * 2 * np.pi for n in range(N)]
             angles += angles[:1]
 
-            # Inicializa o plot polar
-            fig, ax = plt.subplots(figsize=(6, 6), subplot_kw=dict(polar=True))
+            # Inicializa o plot polar com fundo branco
+            fig = plt.figure(figsize=(6, 6), facecolor='white')
+            ax = fig.add_subplot(111, polar=True, facecolor='white')
             
             # Desenha uma linha por fora e preenche
-            ax.plot(angles, values, color=color, linewidth=4, linestyle='solid')
-            ax.fill(angles, values, color=color, alpha=0.5)
+            ax.plot(angles, values, color=color, linewidth=5, linestyle='solid', marker='o', markersize=8)
+            ax.fill(angles, values, color=color, alpha=0.3)
             
-            # Ajusta os labels das categorias
-            plt.xticks(angles[:-1], categories, color='#000000', size=14, weight='bold')
+            # Ajusta os labels das categorias - PRETO SÓLIDO
+            ax.set_xticks(angles[:-1])
+            ax.set_xticklabels(categories, color='#000000', size=16, weight='bold', fontfamily='sans-serif')
             
-            # Ajusta o eixo Y
+            # Ajusta o eixo Y - NÚMEROS PRETOS SÓLIDOS
             ax.set_rlabel_position(0)  # type: ignore
-            plt.yticks([25, 50, 75, 100], ["25", "50", "75", "100"], color="#000000", size=11, weight='bold')
-            plt.ylim(0, 100)
+            ax.set_yticks([25, 50, 75, 100])
+            ax.set_yticklabels(["25", "50", "75", "100"], color="#000000", size=13, weight='bold', fontfamily='sans-serif')
+            ax.set_ylim(0, 100)
             
-            # Aumenta espessura das linhas de grade
-            ax.grid(linewidth=1.5, color='#666666', alpha=0.3)
+            # Grade mais visível
+            ax.grid(linewidth=2, color='#000000', alpha=0.2, linestyle='-')
             
-            # Remove o círculo externo para ficar mais limpo
+            # Remove o círculo externo
             ax.spines['polar'].set_visible(False)
 
-            # Salva
+            # Salva com fundo branco sólido
             filepath = os.path.join(self.output_dir, filename)
-            plt.savefig(filepath, transparent=True, bbox_inches='tight', dpi=150)
+            plt.savefig(filepath, facecolor='white', edgecolor='none', bbox_inches='tight', dpi=200)
             plt.close()
             
             return os.path.abspath(filepath)

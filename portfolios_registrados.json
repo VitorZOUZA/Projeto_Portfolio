@@ -8,18 +8,22 @@
         "local": "Maceió-AL",
         "linkedin": "https://www.linkedin.com/in/mathias-borges-marques-58919727b/",
         "instagram": "",
-        "formacao_curso": "Ciência Da Computação",
-        "formacao_instituicao": "Afya",
-        "formacao_periodo": "",
-        "formacao_descricao": "Ênfase em desenvolvimento de projetos.",
-        "exp_cargo": "Dev Full Stack",
-        "exp_empresa": "Viby",
-        "exp_periodo": "Janeiro 2025 -  Atual",
-        "exp_resumo": "1. Liderei equipes\n2. Desenvolvi projetos em reactjs\n3. Apliquei metodologias ágeis",
-        "habilidades_frontend": "HTML 5, CSS 3, React, Tailwind",
-        "habilidades_backend": "Node.js, Firebase",
-        "habilidades_soft": "Liderança, SCRUM",
-        "photo_path": "C:\\Projeto_Portfolio\\uploads\\bruno.jpeg",
+        "formacoes_list": [
+            {
+                "curso": "Ciência Da Computação",
+                "instituicao": "Afya",
+                "periodo": "",
+                "descricao": "Ênfase em desenvolvimento de projetos."
+            }
+        ],
+        "experiencias_list": [
+            {
+                "cargo": "Dev Full Stack",
+                "empresa": "Viby",
+                "periodo": "Janeiro 2025 -  Atual",
+                "resumo": "1. Liderei equipes\n2. Desenvolvi projetos em reactjs\n3. Apliquei metodologias ágeis"
+            }
+        ],
         "habilidades_frontend_list": [
             "HTML 5",
             "CSS 3",
@@ -34,47 +38,56 @@
             "Liderança",
             "SCRUM"
         ],
-        "data_criacao": "29/11/2025 22:58",
+        "photo_path": "C:\\Projeto_Portfolio\\uploads\\bruno.jpeg",
+        "data_criacao": "30/11/2025 02:02",
         "design_config": {
             "cor_principal": "#3498db",
             "cor_secundaria": "#ecf0f1"
         },
         "processed_img_path": "file:///C:/Projeto_Portfolio/uploads/processed_profile_pic.png",
-        "radar_chart_path": "file:///C:/Projeto_Portfolio/uploads/radar_chart.png"
+        "radar_chart_path": "file:///C:/Projeto_Portfolio/uploads/radar_chart.png",
+        "habilidades_frontend": "HTML 5, CSS 3, React, Tailwind",
+        "habilidades_backend": "Node.js, Firebase",
+        "habilidades_soft": "Liderança, SCRUM",
+        "formacao_curso_0": "Ciência Da Computação",
+        "formacao_instituicao_0": "Afya",
+        "formacao_periodo_0": "",
+        "formacao_descricao_0": "Ênfase em desenvolvimento de projetos.",
+        "exp_cargo_0": "Dev Full Stack",
+        "exp_empresa_0": "Viby",
+        "exp_periodo_0": "Janeiro 2025 -  Atual",
+        "exp_resumo_0": "1. Liderei equipes\n2. Desenvolvi projetos em reactjs\n3. Apliquei metodologias ágeis"
     },
     {
         "nome": "Marcela Mac Donalds",
         "titulo": "Engenheira de Software",
         "bio": "Engenheira de projetos de softwares completos",
         "telefone": "(82) 9999-4848",
-        "email": "marcela.engenheira@gmail.com",
+        "email": "marcela.eng@gmail.com",
         "local": "Arapiraca-AL",
         "linkedin": "https://www.linkedin.com/in/marcela-mac-donalds",
         "instagram": "",
-        "formacao_curso": "Engenharia de Software",
-        "formacao_instituicao": "Unit",
-        "formacao_periodo": "2020-2024",
-        "formacao_descricao": "Durante o curso de Engenharia de Software, foquei em projetos práticos (como desenvolvimento de aplicações em Python e Java), estudos teóricos (Estruturas de Dados, Algoritmos, Banco de Dados), participação em grupos de estudo e hackathons, trabalho de conclusão de curso (TCC) com metodologias ágeis, e atividades extracurriculares como workshops e contribuições open-source. Essas experiências desenvolveram habilidades em resolução de problemas, trabalho em equipe e adaptação a tecnologias emergentes, preparando-me para desafios profissionais.",
-        "exp_cargo": "Engenheira de Software",
-        "exp_empresa": "TOTVS",
-        "exp_periodo": "2019 -  2025",
-        "exp_resumo": "-Desenvolvimento de aplicações web/móveis (Python, JS, React, Django).\n-Análise de requisitos e design de sistemas.\n-Colaboração em equipes ágeis (Scrum/Kanban).\n-Testes automatizados (unitários/integração).\n-Integração com APIs e serviços externos.\n-Suporte a infraestrutura e deploy em nuvem.\n-Documentação e mentoria.\n-Resolução de bugs e otimização (Git, Docker, CI/CD).",
-        "habilidades_frontend": "HTML, CSS, JavaScript, React, Vue.js, TypeScript, Sass, Bootstrap, Responsive Design, Webpack, API Integration.",
-        "habilidades_backend": "Python, Node.js, Express.js, Django, Flask, SQL, PostgreSQL, MongoDB, RESTful APIs, GraphQL, Docker, AWS, Microservices.",
-        "habilidades_soft": "Comunicação, Gestão de Tempo, Pensamento Crítico, Aprendizado Contínuo.",
-        "photo_path": "C:\\Projeto_Portfolio\\uploads\\moca.png",
+        "formacoes_list": [
+            {
+                "curso": "Engenharia de Software",
+                "instituicao": "Unit",
+                "periodo": "2020-2024",
+                "descricao": "Durante o curso de Engenharia de Software, foquei em projetos práticos (como desenvolvimento de aplicações em Python e Java), estudos teóricos (Estruturas de Dados, Algoritmos, Banco de Dados), participação em grupos de estudo e hackathons."
+            }
+        ],
+        "experiencias_list": [
+            {
+                "cargo": "Engenheira de Software",
+                "empresa": "TOTVS",
+                "periodo": "2019 -  2025",
+                "resumo": "-Desenvolvimento de aplicações web/móveis (Python, JS, React, Django).\n-Análise de requisitos e design de sistemas.\n-Colaboração em equipes ágeis (Scrum/Kanban).\n-Testes automatizados (unitários/integração)."
+            }
+        ],
         "habilidades_frontend_list": [
-            "HTML",
-            "CSS",
-            "JavaScript",
-            "React",
             "Vue.js",
             "TypeScript",
-            "Sass",
-            "Bootstrap",
-            "Responsive Design",
             "Webpack",
-            "API Integration."
+            "API"
         ],
         "habilidades_backend_list": [
             "Python",
@@ -85,24 +98,276 @@
             "SQL",
             "PostgreSQL",
             "MongoDB",
-            "RESTful APIs",
-            "GraphQL",
-            "Docker",
-            "AWS",
-            "Microservices."
+            "RESTful API"
         ],
         "habilidades_soft_list": [
             "Comunicação",
-            "Gestão de Tempo",
-            "Pensamento Crítico",
-            "Aprendizado Contínuo."
+            "Gestão de Tempo"
         ],
-        "data_criacao": "29/11/2025 23:14",
+        "photo_path": "C:\\Projeto_Portfolio\\uploads\\moca.png",
+        "data_criacao": "30/11/2025 02:27",
         "design_config": {
-            "cor_principal": "#800080",
-            "cor_secundaria": "#008080"
+            "cor_principal": "#804040",
+            "cor_secundaria": "#004080"
+        },
+        "processed_img_path": "file:///C:/Projeto_Portfolio/uploads/processed_profile_pic.png",
+        "radar_chart_path": "file:///C:/Projeto_Portfolio/uploads/radar_chart.png",
+        "habilidades_frontend": "Vue.js, TypeScript, Webpack, API",
+        "habilidades_backend": "Python, Node.js, Express.js, Django, Flask, SQL, PostgreSQL, MongoDB, RESTful API",
+        "habilidades_soft": "Comunicação, Gestão de Tempo",
+        "formacao_curso_0": "Engenharia de Software",
+        "formacao_instituicao_0": "Unit",
+        "formacao_periodo_0": "2020-2024",
+        "formacao_descricao_0": "Durante o curso de Engenharia de Software, foquei em projetos práticos (como desenvolvimento de aplicações em Python e Java), estudos teóricos (Estruturas de Dados, Algoritmos, Banco de Dados), participação em grupos de estudo e hackathons, trabalho de conclusão de curso (TCC) com metodologias ágeis, e atividades extracurriculares como workshops e contribuições open-source.",
+        "exp_cargo_0": "Engenheira de Software",
+        "exp_empresa_0": "TOTVS",
+        "exp_periodo_0": "2019 -  2025",
+        "exp_resumo_0": "-Desenvolvimento de aplicações web/móveis (Python, JS, React, Django).\n-Análise de requisitos e design de sistemas.\n-Colaboração em equipes ágeis (Scrum/Kanban).\n-Testes automatizados (unitários/integração)."
+    },
+    {
+        "nome": "Bruno Almeida",
+        "titulo": "Desenvolvedor Backend",
+        "bio": "Apaixonado por APIs e dados.",
+        "telefone": "(11) 90000-0000",
+        "email": "bruno.almeida@example.com",
+        "local": "São Paulo-SP",
+        "linkedin": "https://www.linkedin.com/in/bruno-almeida",
+        "instagram": "",
+        "formacoes_list": [
+            {
+                "curso": "Sistemas de Informação",
+                "instituicao": "USP",
+                "periodo": "2018-2022",
+                "descricao": "Foco em engenharia de software."
+            }
+        ],
+        "experiencias_list": [
+            {
+                "cargo": "Desenvolvedor Backend",
+                "empresa": "TechCorp",
+                "periodo": "2023 - Atual",
+                "resumo": "APIs REST, Python, PostgreSQL."
+            }
+        ],
+        "habilidades_frontend_list": [
+            "HTML",
+            "CSS"
+        ],
+        "habilidades_backend_list": [
+            "Python",
+            "FastAPI",
+            "PostgreSQL"
+        ],
+        "habilidades_soft_list": [
+            "Comunicação",
+            "Trabalho em equipe"
+        ],
+        "photo_path": "C:\\Projeto_Portfolio\\uploads\\processed_profile_pic.png",
+        "data_criacao": "30/11/2025 09:10",
+        "design_config": {
+            "cor_principal": "#1abc9c",
+            "cor_secundaria": "#ecf0f1"
         },
         "processed_img_path": "file:///C:/Projeto_Portfolio/uploads/processed_profile_pic.png",
         "radar_chart_path": "file:///C:/Projeto_Portfolio/uploads/radar_chart.png"
+    },
+    {
+        "nome": "Carla Menezes",
+        "titulo": "UI/UX Designer",
+        "bio": "Design centrado no usuário.",
+        "telefone": "(31) 98888-7777",
+        "email": "carla.menezes@example.com",
+        "local": "Belo Horizonte-MG",
+        "linkedin": "https://www.linkedin.com/in/carla-menezes",
+        "instagram": "https://instagram.com/carla.design",
+        "formacoes_list": [
+            {
+                "curso": "Design",
+                "instituicao": "UFMG",
+                "periodo": "2017-2021",
+                "descricao": "Pesquisa de usabilidade e prototipação."
+            }
+        ],
+        "experiencias_list": [
+            {
+                "cargo": "UI/UX Designer",
+                "empresa": "StudioX",
+                "periodo": "2021 - Atual",
+                "resumo": "Figma, entrevistas com usuários, testes A/B."
+            }
+        ],
+        "habilidades_frontend_list": [
+            "Figma",
+            "Design System"
+        ],
+        "habilidades_backend_list": [],
+        "habilidades_soft_list": [
+            "Empatia",
+            "Colaboração"
+        ],
+        "photo_path": "C:\\Projeto_Portfolio\\uploads\\processed_profile_pic.png",
+        "data_criacao": "30/11/2025 09:12",
+        "design_config": {
+            "cor_principal": "#e67e22",
+            "cor_secundaria": "#ecf0f1"
+        },
+        "processed_img_path": "file:///C:/Projeto_Portfolio/uploads/processed_profile_pic.png",
+        "radar_chart_path": "file:///C:/Projeto_Portfolio/uploads/radar_chart.png"
+    },
+    {
+        "nome": "Diego Rocha",
+        "titulo": "DevOps Engineer",
+        "bio": "Automação e observabilidade.",
+        "telefone": "(21) 97777-6666",
+        "email": "diego.rocha@example.com",
+        "local": "Rio de Janeiro-RJ",
+        "linkedin": "https://www.linkedin.com/in/diego-rocha",
+        "instagram": "",
+        "formacoes_list": [
+            {
+                "curso": "Engenharia de Computação",
+                "instituicao": "UFRJ",
+                "periodo": "2016-2021",
+                "descricao": "Sistemas distribuídos e redes."
+            }
+        ],
+        "experiencias_list": [
+            {
+                "cargo": "DevOps Engineer",
+                "empresa": "CloudOps",
+                "periodo": "2022 - Atual",
+                "resumo": "CI/CD, Docker, Kubernetes, Grafana."
+            }
+        ],
+        "habilidades_frontend_list": [
+            "Dashboards"
+        ],
+        "habilidades_backend_list": [
+            "Docker",
+            "Kubernetes",
+            "Terraform"
+        ],
+        "habilidades_soft_list": [
+            "Proatividade",
+            "Documentação"
+        ],
+        "photo_path": "C:\\Projeto_Portfolio\\uploads\\processed_profile_pic.png",
+        "data_criacao": "30/11/2025 09:14",
+        "design_config": {
+            "cor_principal": "#34495e",
+            "cor_secundaria": "#ecf0f1"
+        },
+        "processed_img_path": "file:///C:/Projeto_Portfolio/uploads/processed_profile_pic.png",
+        "radar_chart_path": "file:///C:/Projeto_Portfolio/uploads/radar_chart.png"
+    },
+    {
+        "nome": "Aline Santos",
+        "titulo": "Data Analyst",
+        "bio": "Insights com dados.",
+        "telefone": "(85) 96666-5555",
+        "email": "aline.santos@example.com",
+        "local": "Fortaleza-CE",
+        "linkedin": "https://www.linkedin.com/in/aline-santos",
+        "instagram": "",
+        "formacoes_list": [
+            {
+                "curso": "Estatística",
+                "instituicao": "UFC",
+                "periodo": "2015-2019",
+                "descricao": "Modelagem e visualização."
+            }
+        ],
+        "experiencias_list": [
+            {
+                "cargo": "Analista de Dados",
+                "empresa": "DataPlus",
+                "periodo": "2020 - Atual",
+                "resumo": "Python, Pandas, Power BI."
+            }
+        ],
+        "habilidades_frontend_list": [
+            "Power BI"
+        ],
+        "habilidades_backend_list": [
+            "Python",
+            "SQL"
+        ],
+        "habilidades_soft_list": [
+            "Pensamento crítico"
+        ],
+        "photo_path": "C:\\Projeto_Portfolio\\uploads\\processed_profile_pic.png",
+        "data_criacao": "30/11/2025 09:16",
+        "design_config": {
+            "cor_principal": "#9b59b6",
+            "cor_secundaria": "#ecf0f1"
+        },
+        "processed_img_path": "file:///C:/Projeto_Portfolio/uploads/processed_profile_pic.png",
+        "radar_chart_path": "file:///C:/Projeto_Portfolio/uploads/radar_chart.png"
+    },
+    {
+        "nome": "Marcela Mac Donalds",
+        "titulo": "Engenheira de Software",
+        "bio": "Engenheira de projetos de softwares completos",
+        "telefone": "(82) 9999-4848",
+        "email": "marcela.eng@gmail.com",
+        "local": "Arapiraca-AL",
+        "linkedin": "https://www.linkedin.com/in/marcela-mac-donalds",
+        "instagram": "",
+        "formacoes_list": [
+            {
+                "curso": "Engenharia de Software",
+                "instituicao": "Unit",
+                "periodo": "2020-2024",
+                "descricao": "Durante o curso de Engenharia de Software, foquei em projetos práticos (como desenvolvimento de aplicações em Python e Java), estudos teóricos (Estruturas de Dados, Algoritmos, Banco de Dados), participação em grupos de estudo e hackathons."
+            }
+        ],
+        "experiencias_list": [
+            {
+                "cargo": "Engenheira de Software",
+                "empresa": "TOTVS",
+                "periodo": "2019 -  2025",
+                "resumo": "-Desenvolvimento de aplicações web/móveis (Python, JS, React, Django).\n-Análise de requisitos e design de sistemas.\n-Colaboração em equipes ágeis (Scrum/Kanban).\n-Testes automatizados (unitários/integração)."
+            }
+        ],
+        "habilidades_frontend_list": [
+            "Vue.js",
+            "TypeScript",
+            "Webpack",
+            "API"
+        ],
+        "habilidades_backend_list": [
+            "Python",
+            "Node.js",
+            "Express.js",
+            "Django",
+            "Flask",
+            "SQL",
+            "PostgreSQL",
+            "MongoDB",
+            "RESTful API"
+        ],
+        "habilidades_soft_list": [
+            "Comunicação",
+            "Gestão de Tempo"
+        ],
+        "photo_path": "C:\\Projeto_Portfolio\\uploads\\moca.png",
+        "data_criacao": "30/11/2025 02:22",
+        "design_config": {
+            "cor_principal": "#804040",
+            "cor_secundaria": "#004080"
+        },
+        "processed_img_path": "file:///C:/Projeto_Portfolio/uploads/processed_profile_pic.png",
+        "radar_chart_path": "file:///C:/Projeto_Portfolio/uploads/radar_chart.png",
+        "habilidades_frontend": "Vue.js, TypeScript, Webpack, API",
+        "habilidades_backend": "Python, Node.js, Express.js, Django, Flask, SQL, PostgreSQL, MongoDB, RESTful API",
+        "habilidades_soft": "Comunicação, Gestão de Tempo",
+        "formacao_curso_0": "Engenharia de Software",
+        "formacao_instituicao_0": "Unit",
+        "formacao_periodo_0": "2020-2024",
+        "formacao_descricao_0": "Durante o curso de Engenharia de Software, foquei em projetos práticos (como desenvolvimento de aplicações em Python e Java), estudos teóricos (Estruturas de Dados, Algoritmos, Banco de Dados), participação em grupos de estudo e hackathons, trabalho de conclusão de curso (TCC) com metodologias ágeis, e atividades extracurriculares como workshops e contribuições open-source.",
+        "exp_cargo_0": "Engenheira de Software",
+        "exp_empresa_0": "TOTVS",
+        "exp_periodo_0": "2019 -  2025",
+        "exp_resumo_0": "-Desenvolvimento de aplicações web/móveis (Python, JS, React, Django).\n-Análise de requisitos e design de sistemas.\n-Colaboração em equipes ágeis (Scrum/Kanban).\n-Testes automatizados (unitários/integração)."
     }
 ]
