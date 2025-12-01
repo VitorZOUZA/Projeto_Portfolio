@@ -1,8 +1,9 @@
 # libs do projeto
 #rode o comando: pip install -r requirements.txt
-customtkinter
-Pillow
-Jinja2
-weasyprint
-pymupdf
-matplotlib
+
+customtkinter    # Biblioteca para criar interfaces gráficas modernas com Tkinter
+Pillow          # Biblioteca para processamento e manipulação de imagens
+Jinja2          # Engine de templates para gerar documentos HTML dinamicamente
+weasyprint      # Converte HTML/CSS para PDF com alta fidelidade
+pymupdf         # Biblioteca para manipulação e leitura de arquivos PDF
+matplotlib      # Biblioteca para criação de gráficos e visualizações de dados
